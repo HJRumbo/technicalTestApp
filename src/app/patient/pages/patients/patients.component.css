@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+.content {
+    width: 80vw;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}

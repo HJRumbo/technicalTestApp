@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="content">
+        <div class="flex">
+            <h1>Pacientes</h1>
+            <button mat-raised-button color="primary">Nuevo paciente <mat-icon>more_vert</mat-icon></button>
+        </div>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Documento de identidad</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Número documento" #input type="number" min="0">
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource!">
+
+                <ng-container matColumnDef="Id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Nombre">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Apellido">
+                    <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Tipo de documento">
+                    <th mat-header-cell *matHeaderCellDef> Tipo de documento </th>
+                    <td mat-cell *matCellDef="let element"> {{element.documentType}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Número documento">
+                    <th mat-header-cell *matHeaderCellDef> Número documento </th>
+                    <td mat-cell *matCellDef="let element"> {{element.documentNumber}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Ciudad">
+                    <th mat-header-cell *matHeaderCellDef> Ciudad </th>
+                    <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>
